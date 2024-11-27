@@ -1,0 +1,146 @@
+ :root {
+     --primary: #ffd700;
+     --background: #000000;
+     --card-bg: #1a1a1a;
+     --text: #ffffff;
+     --success: #4caf50;
+     --danger: #f44336;
+ }
+
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: 'Inter', system-ui, sans-serif;
+ }
+
+ body {
+     background-color: var(--background);
+     color: var(--text);
+     line-height: 1.6;
+ }
+
+ .container {
+     max-width: 1200px;
+     margin: 0 auto;
+     padding: 2rem;
+ }
+
+ header {
+     text-align: center;
+     margin-bottom: 2rem;
+ }
+
+ h1 {
+     color: var(--primary);
+     margin-bottom: 1rem;
+ }
+
+ .crypto-grid {
+     display: grid;
+     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+     gap: 1rem;
+     margin-bottom: 2rem;
+ }
+
+ .crypto-card {
+     background: var(--card-bg);
+     border-radius: 8px;
+     padding: 1rem;
+     cursor: pointer;
+     transition: transform 0.2s;
+     border: 1px solid transparent;
+ }
+
+ .crypto-card:hover {
+     transform: translateY(-2px);
+     border-color: var(--primary);
+ }
+
+ .crypto-card.selected {
+     border-color: var(--primary);
+     background: rgba(255, 215, 0, 0.1);
+ }
+
+ .crypto-name {
+     font-weight: bold;
+     color: var(--primary);
+ }
+
+ .crypto-symbol {
+     color: #888;
+     font-size: 0.9rem;
+ }
+
+ .crypto-price {
+     font-size: 1.2rem;
+     margin: 0.5rem 0;
+ }
+
+ .price-change {
+     font-size: 0.9rem;
+     padding: 0.2rem 0.5rem;
+     border-radius: 4px;
+ }
+
+ .price-change.positive {
+     color: var(--success);
+ }
+
+ .price-change.negative {
+     color: var(--danger);
+ }
+
+ .comparison-section {
+     background: var(--card-bg);
+     border-radius: 8px;
+     padding: 1rem;
+     margin: 2rem 0rem;
+ }
+
+ .comparison-title {
+     color: var(--primary);
+     margin-bottom: 1rem;
+ }
+
+ .comparison-grid {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+     gap: 1rem;
+ }
+
+ .preferences {
+     margin-top: 2rem;
+     padding: 1rem;
+     background: var(--card-bg);
+     border-radius: 8px;
+ }
+
+ .preferences select,
+ .preferences button {
+     background: var(--background);
+     color: var(--text);
+     border: 1px solid var(--primary);
+     padding: 0.5rem;
+     border-radius: 4px;
+     margin-right: 1rem;
+ }
+
+ .preferences button {
+     cursor: pointer;
+ }
+
+ .preferences button:hover {
+     background: var(--primary);
+     color: var(--background);
+ }
+
+ @media (max-width: 768px) {
+     .container {
+         padding: 1rem;
+     }
+
+     .crypto-grid {
+         grid-template-columns: 1fr;
+     }
+ }

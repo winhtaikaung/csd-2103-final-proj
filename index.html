@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Tracker</title>
+    <link href="./styles.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Crypto Tracker</h1>
+            <div class="preferences">
+                <select id="sortBy">
+                    <option value="name">Sort by Name</option>
+                    <option value="price">Sort by Price</option>
+                    <option value="change">Sort by 24h Change</option>
+                </select>
+                <button id="toggleRefresh">Auto Refresh: ON</button>
+            </div>
+        </header>
+
+        <div class="comparison-section">
+            <h2 class="comparison-title">Comparison (Select up to 5)</h2>
+            <div class="comparison-grid" id="comparisonGrid"></div>
+        </div>
+
+        <div class="crypto-grid" id="cryptoGrid"></div>
+    </div>
+    <script src="./app.js" type="text/javascript"></script>
+
+</body>
+
+</html>
