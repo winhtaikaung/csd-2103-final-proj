@@ -1,45 +1,4 @@
-const mockApiResponse = [
-    {
-        id: 'bitcoin',
-        symbol: 'btc',
-        name: 'Bitcoin',
-        current_price: 48235.12,
-        price_change_percentage_24h: 2.5,
-        market_cap: 934567890123
-    },
-    {
-        id: 'ethereum',
-        symbol: 'eth',
-        name: 'Ethereum',
-        current_price: 2890.45,
-        price_change_percentage_24h: -1.2,
-        market_cap: 345678901234
-    },
-    {
-        id: 'cardano',
-        symbol: 'ada',
-        name: 'Cardano',
-        current_price: 1.23,
-        price_change_percentage_24h: 5.7,
-        market_cap: 45678901234
-    },
-    {
-        id: 'solana',
-        symbol: 'sol',
-        name: 'Solana',
-        current_price: 89.34,
-        price_change_percentage_24h: 8.9,
-        market_cap: 23456789012
-    },
-    {
-        id: 'polkadot',
-        symbol: 'dot',
-        name: 'Polkadot',
-        current_price: 12.78,
-        price_change_percentage_24h: -3.4,
-        market_cap: 12345678901
-    }
-];
+
 
 class CryptoTracker {
     constructor() {
@@ -96,17 +55,13 @@ class CryptoTracker {
             redirect: 'follow'
         };
 
-        // this.cryptoData = mockApiResponse;
-
-        // const result = await fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=cad&ids=bitcoin%2Cethereum%2Csolana%2Cpolkadot%2Cdoge%2Ccardano", requestOptions)
-        // this.cryptoData = await result.json()
-
         const localCache = localStorage.getItem("api-cache")
         const cacheObj = JSON.parse(localCache)
 
         if (localCache === null || (localCache !== null && Date.now() - cacheObj.ts > 30000)) {
-            this.cryptoData = mockApiResponse
-            localStorage.setItem("api-cache", JSON.stringify({ "resp": mockApiResponse, "ts": Date.now() }))
+            const result = await fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=cad&ids=bitcoin%2Cethereum%2Csolana%2Cpolkadot%2Cdoge%2Ccardano%2Cstellar", requestOptions)
+            this.cryptoData = await result.json()
+            localStorage.setItem("api-cache", JSON.stringify({ "resp": this.cryptoData, "ts": Date.now() }))
             console.log(`Cache Updated at ${Date.now()}`)
         } else {
             this.cryptoData = cacheObj.resp
